@@ -24,13 +24,13 @@ yarn add @mrnko/css-normalize
 
 Import the CSS file into your project:
 
-```bash
+```css
 @import '@mrnko/css-normalize/index.css';
 ```
 
 Or, if you're using JavaScript-based tooling (like Vite, Webpack, or Next.js), 
 import it in your entry file:
 
-```bash
+```js
 import '@mrnko/css-normalize';
 ```
