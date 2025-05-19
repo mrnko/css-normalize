@@ -1,0 +1,203 @@
+/**
+  Block model normalization
+ */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+/**
+  Remove internal indentation on the left of list tags,
+  which have the class attribute
+  */
+:where(ul, ol):where([class]) {
+  padding-left: 0;
+}
+
+/**
+  Remove external indentation of body and two other tags,
+  which have the class attribute.
+  */
+body,
+:where(blockquote, figure):where([class]) {
+  margin: 0;
+}
+
+/**
+  Remove external vertical indentation for the required tags,
+  which have the class attribute.
+  */
+:where(h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  ul,
+  ol,
+  dl):where([class]) {
+  margin-block: 0;
+}
+
+:where(dd[class]) {
+  margin-left: 0;
+}
+
+:where(fieldset[class]) {
+  margin-left: 0;
+  padding: 0;
+  border: none;
+}
+
+/**
+  Remove the standard marker for a bulleted list,
+  which has the class attribute
+  */
+:where(ul[class]) {
+  list-style: none;
+}
+
+:where(address[class]) {
+  font-style: normal;
+}
+
+/**
+  Zero out vertical outer indents of a paragraph,
+  declare a local variable for the outer indent down,
+  to avoid interacting with the more complex selector
+  */
+p {
+  --paragraphMarginBottom: 24px;
+
+  margin-block: 0;
+}
+
+/**
+  External indent down for a paragraph without class attribute,
+  which is not last among its neighboring elements
+  */
+p:where(:not([class]):not(:last-child)) {
+  margin-bottom: var(--paragraphMarginBottom);
+}
+
+
+/**
+  Simplify your work with images and videos
+  */
+img,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/**
+  Inherit font properties for input fields
+  */
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+html {
+  /**
+    Useful in most situations
+    (when, for example, you need to "pin" the footer to the bottom of the site)
+    */
+  height: 100%;
+  /**
+    Remove interface horizontal jump
+    when scrollbar appears / disappears
+    */
+  scrollbar-gutter: stable;
+}
+
+/**
+  Smooth Scrolling
+ */
+html,
+:has(:target) {
+  scroll-behavior: smooth;
+}
+
+body {
+  /**
+    Useful in most situations
+    (when, for example, you need to "pin" the footer to the bottom of the site)
+    */
+  min-height: 100%;
+  /**
+    Uniform spacing
+    */
+  line-height: 1.5;
+}
+
+/**
+  Normalize the height of a link element when inspecting it in DevTools
+  */
+a:where([class]) {
+  display: inline-flex;
+}
+
+/**
+  Cursor-hand when hovering over an item
+  */
+button,
+label {
+  cursor: pointer;
+}
+
+/**
+  Colorize the svg elements of
+  (except those that already have the
+  attribute fill with a value of 'none' or start with 'url')
+  */
+:where([fill]:not([fill="none"],
+    [fill^="url"])) {
+  fill: currentColor;
+}
+
+/**
+  Colorize the svg elements of
+  (except for those that already have the
+  stroke attribute set to 'none')
+  */
+:where([stroke]:not([stroke="none"],
+    [stroke^="url"])) {
+  stroke: currentColor;
+}
+
+/**
+  Fix color change delay bug when interacting with svg elements
+  */
+svg * {
+  transition-property: fill, stroke;
+}
+
+/**
+  Bringing table frames into classic 'collapse' view
+  */
+:where(table) {
+  border-collapse: collapse;
+  border-color: currentColor;
+}
+
+/**
+  Remove all animations and transitions for people
+  who prefer not to use them.
+  */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
