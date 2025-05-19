@@ -1,5 +1,9 @@
 # css-normalize
 
+[![mrnko - css-normalize](https://img.shields.io/static/v1?label=mrnko&message=css-normalize&color=blue&logo=github)](https://github.com/mrnko/css-normalize "Go to GitHub repo")
+[![stars - css-normalize](https://img.shields.io/github/stars/mrnko/css-normalize?style=social)](https://github.com/mrnko/css-normalize)
+[![forks - css-normalize](https://img.shields.io/github/forks/mrnko/css-normalize?style=social)](https://github.com/mrnko/css-normalize)
+
 **Modern Normalization of Styles**
 
 A minimalistic and up-to-date CSS reset that provides predictable element 
